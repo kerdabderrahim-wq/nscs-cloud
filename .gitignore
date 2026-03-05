@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.DS_Store
+storage/*
+!storage/.gitkeep
+database/users.json
+backend/test_*.js
+backend/update_admin.js
+backend/fix_db.js
