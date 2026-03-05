@@ -6,6 +6,10 @@ const usersFile = path.join(__dirname, '../../database/users.json');
 // Helper to get users
 const getUsers = () => {
     if (!fs.existsSync(usersFile)) {
+        const dbDir = path.dirname(usersFile);
+        if (!fs.existsSync(dbDir)) {
+            fs.mkdirSync(dbDir, { recursive: true });
+        }
         fs.writeFileSync(usersFile, JSON.stringify([]));
         return [];
     }

@@ -85,8 +85,11 @@ exports.processAI = async (req, res) => {
             return res.status(401).json({ response: "Access Denied: Invalid AI API Key." });
         }
 
-        const response = await axios.post('http://localhost:11434/api/generate', {
-            model: "llama3",
+        const ollamaUrl = process.env.OLLAMA_URL || 'http://localhost:11434/api/generate';
+        const ollamaModel = process.env.MODEL || 'llama3';
+
+        const response = await axios.post(ollamaUrl, {
+            model: ollamaModel,
             prompt: prompt,
             stream: false
         });
